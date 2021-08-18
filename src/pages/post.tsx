@@ -1,18 +1,12 @@
 import React from 'react';
 
-import { Helmet } from 'react-helmet';
+import { StyledMain } from 'components/App/Main';
+import PostWork from 'components/PostWork';
 
-import PostWork from "components/PostWork";
-
-const PostPage = () => (
-  <>
-    <Helmet>
-      <title>Profile</title>
-    </Helmet>
-    <main id="main">
-      <PostWork />
-    </main>
-  </>
+const PostPage: React.FC = () => (
+  <StyledMain>
+    <PostWork />
+  </StyledMain>
 );
 
 export default PostPage;

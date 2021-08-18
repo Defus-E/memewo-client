@@ -955,9 +955,6 @@ body {
   opacity: 1
 }
 
-#main {
-  min-height: calc(100vh - (128px + 84px))
-}
 
 #main #even-banner {
   margin: 40px 0

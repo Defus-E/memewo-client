@@ -1,1 +1,1 @@
-export { default } from "./DailyRating";
+export { default } from './DailyRating';

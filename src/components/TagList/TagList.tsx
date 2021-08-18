@@ -1,22 +1,33 @@
 import React, { FC } from 'react';
 
+import { StyledWrapper } from 'components/App/Wrapper';
+
+import { StyledTagItem, StyledTagLink, StyledTagList } from './styles';
+
 const TagList: FC = () => {
-  const names = ["Pokémon", "#MOTHER", "#Animation", "#3DCG", "#Practice", "rabbit", "beautiful girl"]
+  const names = ['Pokémon', '#MOTHER', '#Animation', '#3DCG', '#Practice', 'rabbit', 'beautiful girl'];
   const tagList = Array.from({ length: 7 }, (e, i) => ({
     name: names[i],
     cover: `https://picsum.photos/300/300?random=${i + 1}`,
   }));
 
   return (
-    <div className="wrapper-wide D(f) Fld(c) Mt(40px)" id="tags" data-uk-sticky="offset: 64px:top:64;animation: uk-animation-slide-bottom-small">
-      <ul className="D(f)">
+    <StyledWrapper
+      style={{
+        display: 'flex',
+        flexDirection: 'column',
+        marginTop: '40px',
+      }}
+      data-uk-sticky="offset: 64px:top:64;animation: uk-animation-slide-bottom-small"
+    >
+      <StyledTagList>
         {tagList.map((tag, i) => (
-          <li key={i} style={{"TagCover": `url("${tag.cover}")`} as React.CSSProperties}>
-            <a className="D(f) Ai(c) Jc(c)" href="/#">{tag.name}</a>
-          </li>
+          <StyledTagItem key={i} coverUrl={tag.cover}>
+            <StyledTagLink href="/#">{tag.name}</StyledTagLink>
+          </StyledTagItem>
         ))}
-      </ul>
-    </div>
+      </StyledTagList>
+    </StyledWrapper>
   );
 };
 

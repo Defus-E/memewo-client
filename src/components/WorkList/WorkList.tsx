@@ -1,19 +1,28 @@
-import WorkItem from "components/WorkItem";
-import { IWorkItem } from "types/work";
 import React from 'react';
+
+import WorkItem, { WorkItemProps } from 'components/WorkItem/WorkItem';
+
+import { IWorkItem } from 'types/work';
+
+import { StyledWorkList } from './styles';
 
 interface WorkListProps {
   works: IWorkItem[];
 }
 
-const WorkList: React.FC<WorkListProps> = ({ works }) => {
+const WorkList: React.FC<WorkListProps & Omit<WorkItemProps, 'index' | 'work'>> = ({ works, ...childProps }) => {
   return (
-    <div className="grid-list D(f) Flw(w)" data-packery="{ &quot;itemSelector&quot;: &quot;.grid-list-item&quot;, &quot;gutter&quot;: 2 }">
+    <StyledWorkList
+      options={{
+        itemSelector: '.work-list-item',
+        gutter: 2,
+      }}
+    >
       {works.map((work, i) => (
-        <WorkItem key={i} work={work} index={i} />
+        <WorkItem key={i} work={work} index={i} {...childProps} />
       ))}
-    </div>
-  )
-}
+    </StyledWorkList>
+  );
+};
 
 export default WorkList;

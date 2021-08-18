@@ -1,58 +1,94 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 
-import { Helmet } from 'react-helmet';
+import { Link } from 'react-router-dom';
 
-const ProfilePage = () => (
-  <>
-    <Helmet>
-      <title>Profile</title>
-    </Helmet>
-    <main id="main">
-      <div className="wrapper D(f) Fld(c)">
-        <div className="profile-header D(f) Ai(c) Jc(sb)">
-          <div className="block D(f) Ai(c)"><img className="avatar" src="https://sun7-6.userapi.com/s/v1/ig2/uekyyYPL4x9T84wlJd343HpWBUBkzW732w1d5KAHkV0Y4hgWnmWgB1qQHW0Vey0XE7NPRJWGrmaz900WsW7foi9g.jpg?size=50x0&quality=96&crop=0,0,862,862&ava=1" />
-            <div className="user-info">
-              <div className="nickname">Calciumtrice</div>
-              <div className="indificator">@calciumtrice</div>
-            </div>
-          </div>
-          <div className="block"><button className="btn btn-default Tt(u)">Подписаться</button></div>
-        </div>
-        <div className="profile-cats">
-          <ul className="D(f) Ai(c)">
-            <li className="active D(f) Ai(c)"><a className="D(f) Ai(c)" href="#">иллюстрации</a></li>
-            <li className="D(f) Ai(c)"><a className="D(f) Ai(c)" href="#">Манга</a></li>
-            <li className="D(f) Ai(c)"><a className="D(f) Ai(c)" href="#">Новеллы</a></li>
-            <li className="D(f) Ai(c)"><a className="D(f) Ai(c)" href="#">Учеба</a></li>
-            <li className="D(f) Ai(c)"><a className="D(f) Ai(c)" href="#">Пьеса</a></li>
-            <li className="D(f) Ai(c)"><a className="D(f) Ai(c)" href="#">Видео</a></li>
-            <li className="D(f) Ai(c)"><a className="D(f) Ai(c)" href="#">Анимация</a></li>
-            <li className="D(f) Ai(c)"><a className="D(f) Ai(c)" href="#">Чистое искусство</a></li>
-          </ul>
-        </div>
-        <div className="profile-body">
-          <div className="grid-list D(f) Flw(w)" data-packery="{ &quot;itemSelector&quot;: &quot;.grid-list-item&quot;, &quot;gutter&quot;: 2 }">
-            {/* <div className="grid-list-item"><img className="cover" src="https://picsum.photos/300/300?random=1" onError="this.classList.add('onerror')" /> */}
-            <div className="grid-list-item"><img className="cover" src="https://picsum.photos/300/300?random=1" />
-              <div className="onerror-div" />
-              <div className="overlay D(f) Fld(c) Jc(fe)">
-                <div className="line D(f) Ai(c) Jc(sb)"><a className="title" href="#">Lorem ipsum</a>
-                  <div className="buy"><button data-uk-icon="buy" /></div>
-                </div>
-                <div className="line D(f) Ai(c) Jc(sb)"><a className="author D(f) Ai(c)" href="#"><img className="author-avatar" src="https://sun7-6.userapi.com/s/v1/ig2/uekyyYPL4x9T84wlJd343HpWBUBkzW732w1d5KAHkV0Y4hgWnmWgB1qQHW0Vey0XE7NPRJWGrmaz900WsW7foi9g.jpg?size=50x0&quality=96&crop=0,0,862,862&ava=1" />
-                    <div className="author-name">Calciumtrice</div>
-                  </a>
-                  <div className="rating"><label className="like"><input type="checkbox" />
-                      <div className="like-wrap"><i data-uk-icon="like-0" /><i data-uk-icon="like-1" /></div>
-                    </label></div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </main>
-  </>
-);
+import { StyledMain } from 'components/App/Main';
+import { StyledNavProfileItem, StyledNavProfileList } from 'components/App/NavBar';
+import { StyledWrapper } from 'components/App/Wrapper';
+
+import ProfileHeader from '../components/Header/Profile';
+import WorkList from '../components/WorkList';
+import { IWorkItem } from '../types/work';
+
+const ProfilePage: React.FC = () => {
+  const [workList, setWorkList] = useState<IWorkItem[]>([]);
+  const topics = [
+    {
+      title: 'Иллюстрации',
+      href: '',
+    },
+    {
+      title: 'Манга',
+      href: 'manga',
+    },
+    {
+      title: 'Новеллы',
+      href: 'novels',
+    },
+    {
+      title: 'Учеба',
+      href: 'study',
+    },
+    {
+      title: 'Пьеса',
+      href: 'piece',
+    },
+    {
+      title: 'Видео',
+      href: 'video',
+    },
+    {
+      title: 'Анимация',
+      href: 'animation',
+    },
+    {
+      title: 'Чистое искусство',
+      href: 'arts',
+    },
+  ];
+
+  useEffect(() => {
+    const works: IWorkItem[] = Array.from({ length: 10 }, (e, i) => ({
+      title: 'Lorem ipsum',
+      cover: `https://picsum.photos/1300/300?random=${i + 1}`,
+      author: {
+        name: 'Calciumtrice',
+        avatar: 'https://sun7-6.userapi.com/s/v1/ig2/uekyyYPL4x9T84wlJd343HpWBUBkzW732w1d5KAHkV0Y4hgWnmWgB1qQHW0Vey0XE7NPRJWGrmaz900WsW7foi9g.jpg?size=50x0&quality=96&crop=0,0,862,862&ava=1',
+      },
+    }));
+
+    setWorkList(works);
+  }, []);
+
+  return (
+    <StyledMain>
+      <StyledWrapper
+        style={{
+          display: 'flex',
+          flexDirection: 'column',
+          maxWidth: '1200px',
+        }}
+      >
+        <ProfileHeader />
+        <StyledNavProfileList>
+          {topics.map((topic, i) => (
+            <StyledNavProfileItem key={i} active={i === 0}>
+              <Link
+                style={{
+                  display: 'flex',
+                  alignItems: 'center',
+                }}
+                to={`/profile/${topic.href}`}
+              >
+                {topic.title}
+              </Link>
+            </StyledNavProfileItem>
+          ))}
+        </StyledNavProfileList>
+        <WorkList works={workList} itemWidth="calc(100% / 5 - 2px)" itemHeight="238px" />
+      </StyledWrapper>
+    </StyledMain>
+  );
+};
 
 export default ProfilePage;

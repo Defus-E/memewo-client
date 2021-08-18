@@ -1,2 +1,51 @@
-.post-work-body,.post-work-body .input-description{width:100%}.post-work-body>div{width:50%;padding:60px}.post-work-body .left{padding-right:30px}.post-work-body .right{padding-left:30px}.blocks .block-line{margin-bottom:20px}.badged[data-remaining],input[maxlength],textarea[maxlength]{position:relative}.badged[data-remaining]:after{content:attr(data-remaining) " / " attr(data-limit);display:inline-block;position:absolute;bottom:1px;right:1px;padding:.25ex .5ex;pointer-events:none;color:var(--color2);opacity:.7;font-size:.8em}.badged[data-remaining].warning::after{color:#ff0}.badged[data-remaining].critical::after{color:red}.uppy-Dashboard-poweredBy{display:none!important}
+.post-work-body, .post-work-body .input-description {
+    width: 100%
+}
+
+.post-work-body > div {
+    width: 50%;
+    padding: 60px
+}
+
+.post-work-body .left {
+    padding-right: 30px
+}
+
+.post-work-body .right {
+    padding-left: 30px
+}
+
+.blocks .block-line {
+    margin-bottom: 20px
+}
+
+.badged[data-remaining], input[maxlength], textarea[maxlength] {
+    position: relative
+}
+
+.badged[data-remaining]:after {
+    content: attr(data-remaining) " / " attr(data-limit);
+    display: inline-block;
+    position: absolute;
+    bottom: 1px;
+    right: 1px;
+    padding: .25ex .5ex;
+    pointer-events: none;
+    color: var(--color2);
+    opacity: .7;
+    font-size: .8em
+}
+
+.badged[data-remaining].warning::after {
+    color: #ff0
+}
+
+.badged[data-remaining].critical::after {
+    color: red
+}
+
+.uppy-Dashboard-poweredBy {
+    display: none !important
+}
+
 /*# sourceMappingURL=maps/post.css.map */

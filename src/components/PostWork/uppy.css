@@ -1,0 +1,35 @@
+.uppy-Dashboard-inner {
+  background-color: #151515;
+  border: 1px solid #2d2d2c;
+}
+[data-uppy-drag-drop-supported='true'] .uppy-Dashboard-AddFiles {
+  border: 0;
+}
+.uppy-Dashboard-AddFiles-title {
+  color: #fff;
+}
+.uppy-DashboardContent-bar {
+  background-color: #151515;
+  border-color: #2d2d2c;
+  color: #fff;
+}
+.uppy-StatusBar:not([aria-hidden='true']).is-waiting {
+  border-color: #2d2d2c;
+}
+.uppy-StatusBar,
+.uppy-StatusBar.is-waiting .uppy-StatusBar-actions {
+  background-color: #151515;
+}
+.uppy-StatusBar:before {
+  background-color: #2d2d2c;
+}
+[dir='ltr'] .uppy-size--md .uppy-Dashboard-Item-action--remove {
+  top: 4px;
+  right: 4px;
+}
+.uppy-StatusBar-status {
+  color: #fff;
+}
+.uppy-Dashboard-AddFiles-info {
+  display: none !important;
+}

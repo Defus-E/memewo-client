@@ -1,16 +1,15 @@
 import React from 'react';
 
+import AppRouterSwitch from 'components/AppRouterSwitch';
 import { BrowserRouter as Router } from 'react-router-dom';
 
-import AppRouterSwitch from 'components/AppRouterSwitch';
-import TopHeader from 'components/Header/Top';
+import Footer from 'components/Footer';
 import BottomHeader from 'components/Header/Bottom';
-import Footer from "components/Footer";
+import TopHeader from 'components/Header/Top';
 
-const App = () => {
+const App: React.FC = () => {
   return (
     <Router>
-      <div className="header-clear" />
       <TopHeader />
       <BottomHeader />
       <AppRouterSwitch />
